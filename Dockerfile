@@ -5,9 +5,9 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # install required packages for system
-RUN yum update -y \
-    && yum install -y gcc default-libmysqlclient-dev pkg-config \
-    && rm -rf /var/cache/yum/*
+RUN dnf update -y \
+    && dnf install -y gcc default-libmysqlclient-dev pkg-config \
+    && rm -rf /var/cache/dnf/*
 
 # Copy the requirements file into the container
 COPY requirements.txt .
