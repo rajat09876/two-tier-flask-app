@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Install required system packages
-RUN apt-get update -y && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config \
+RUN apt-get update -y && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
