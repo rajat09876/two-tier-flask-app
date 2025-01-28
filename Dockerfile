@@ -4,10 +4,9 @@ FROM python:3.9-slim
 # Set the working directory in the container
 WORKDIR /app
 
-# install required packages for system
-RUN dnf update -y \
-    && dnf install -y gcc default-libmysqlclient-dev pkg-config \
-    && rm -rf /var/cache/dnf/*
+# Install required system packages
+RUN apt-get update -y && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements file into the container
 COPY requirements.txt .
@@ -21,4 +20,3 @@ COPY . .
 
 # Specify the command to run your application
 CMD ["python", "app.py"]
-
